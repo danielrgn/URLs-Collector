@@ -1,5 +1,7 @@
 # URLs-Collector
 
+![Actions Workflow](https://github.com/po5i/flask-mini-tests/workflows/Flask/badge.svg)
+
 This application is responsible to collect all URLs from the URL that you can input the text field.
 
 ## Prerequisites
