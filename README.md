@@ -34,7 +34,14 @@ python app.py
 
  View your app at: http://localhost:8000
 
-## 3. Prepare the app for deployment
+## 3. Run the tests locally
+
+Run the tests.
+  ```
+python -m pytest
+  ```
+
+## 4. Prepare the app for deployment
 
 To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file.
 
@@ -46,7 +53,7 @@ The manifest.yml includes basic information about your app, such as the name, ho
    memory: 128M
  ```
 
-## 4. Deploy the app
+## 5. Deploy the app
 
 You can use the Cloud Foundry CLI to deploy apps.
 
@@ -83,7 +90,7 @@ cf apps
   ```
   command to view your apps status and see the URL.
 
-## 5. Add a database
+## 6. Add a database
 
 Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on IBM Cloud.
 
@@ -94,7 +101,7 @@ Next, we'll add a NoSQL database to this application and set up the application 
 
 Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code. [Learn more...](/docs/manageapps/depapps.html#app_env)
 
-## 6. Use the database
+## 7. Use the database
 
 We're now going to update your local code to point to this database. We'll create a json file that will store the credentials for the services the application will use. This file will get used ONLY when the application is running locally. When running in IBM Cloud, the credentials will be read from the VCAP_SERVICES environment variable.
 
