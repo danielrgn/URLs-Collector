@@ -1,6 +1,6 @@
-from models.url import Url
 from unittest import TestCase
 import mock
+from models.url import Url
 
 url = Url('www.google.com.br')
 
@@ -18,26 +18,20 @@ class MockResponse:
 
 
 class UrlTests(TestCase):
-    def test_set_url_with_sanitize(self):
-        assert 'http://www.google.com.br' == url.url
-
-    def test_get_urls_from_string_failed(self):
-        text = '<html><a>www;google.com</a></html>'
-        assert [] == url._get_urls_from_string(text)
-
-    def test_get_urls_from_string_success(self):
-        text = '<html><a href="http://www.google.com">Google</a></html>'
-        assert ['http://www.google.com'] == url._get_urls_from_string(text)
+    @staticmethod
+    def test_set_url_with_sanitize():
+        assert url.url == 'http://www.google.com.br'
 
     @mock.patch('requests.get')
     def test_get_urls_from_entry_url_mock_requests(self, mock_get):
         mock_resp = self._mock_response(
-            text='<html><a href="http://www.google.com">Google</a><a href="https://gist.github.com">github</a></html>')
+            text='<html><a href="http://www.google.com">Google</a>'
+                 '<a href="https://gist.github.com">github</a></html>')
         mock_get.return_value = mock_resp
 
         resp = url.get_urls_from_entry_url()
 
-        assert ['http://www.google.com', 'https://gist.github.com'] == resp
+        assert resp == ['http://www.google.com', 'https://gist.github.com']
 
     @staticmethod
     def _mock_response(text=""):

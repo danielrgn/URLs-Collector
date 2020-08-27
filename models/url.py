@@ -7,7 +7,6 @@ class Url:
         self.url = self._sanitize_url(url)
     
     def get_urls_from_entry_url(self):
-        urls = []
         try:
             f = requests.get(self.url)
             urls = self._get_urls_from_string(f.text)
