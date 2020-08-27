@@ -1,0 +1,5 @@
+---
+applications:
+ - name: Urls Collector
+   random-route: true
+   memory: 128M
